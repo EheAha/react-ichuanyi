@@ -42,6 +42,7 @@ class HomeContainer extends Component{
         )
     }
     recommend(props,text){ 
+        console.log(text)
         props.history.push('/singlePage',text)
     }
     toMore(props){ 

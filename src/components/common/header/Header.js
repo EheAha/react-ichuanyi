@@ -51,7 +51,3 @@ export default withRouter(class Header extends Component{
         })
     }
 })
-
-// export {
-//     Header
-// }

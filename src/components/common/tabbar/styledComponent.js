@@ -8,12 +8,13 @@ const TabBarContainer = border({
         height:.7rem;
         background:#fff;
         display:flex;
-        /* margin-top:${props=>
+        margin-top:${props=>
             props.isMargin?'.44rem':0
-        } */
+        };
         position:${props=>
             props.isMargin?'absolute!important':''
-        }
+        };
+        top:0;
         z-index:${props=>
             props.isMargin?100:0
         }

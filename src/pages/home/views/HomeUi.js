@@ -26,11 +26,10 @@ class HomeUi extends Component{
         }
     }
     render(){
-        // console.log(9)
         let inSeasonResource = {...this.props.homeData.inSeason}
         let tabbarResource = this.props.homeData.suitTabs
         let homeListResource = this.state.homeListData
-        console.log(homeListResource)
+
         return(
             <Fragment>
                 <Header hasList={this.props.hasList}></Header>

@@ -1,0 +1,1 @@
+export const GET_LOCATION_DATA = 'recommend/get_location_data'

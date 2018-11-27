@@ -35,7 +35,6 @@ class ShareHeaderContainer extends Component{
     }
     render(){
         let tabbarResource = this.props.moreData
-        // console.log(this.props)
         return(
             <Fragment>
                 <Header receive={this.receiveIsShow} {...this.props}></Header>

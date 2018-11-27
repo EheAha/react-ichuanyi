@@ -7,6 +7,10 @@ import { getMuneResourceAsync } from '../actionCreators'
 import BScroll from 'better-scroll'
 
 import {
+    withRouter
+} from 'react-router-dom'
+
+import {
     SingleTitle,
     NavContentWrap,
     LeftNavMune,
@@ -67,9 +71,9 @@ class More extends Component {
                         <RightContent ref={el => this.navListScroll=el}>
                             <div>
                                 {
-                                    Object.values(this.state.navContent).map((value,index)=>{
+                                    Object.values(this.state.navContent).map((value,index)=>{                                   
                                         return(
-                                            <div key={index}>
+                                            <div key={index} onClick={()=>this.getValue(value.name)}>
                                                 <img src={`https://image3.ichuanyi.cn/`+`${value.pic}`} alt='' />
                                                 <span>{value.name}</span>
                                             </div>
@@ -83,6 +87,18 @@ class More extends Component {
             )
         }
         return null
+    }
+
+    // shouldComponentUpdate(){
+    //     console.log(0)
+    //     // this.getValue = null
+    //     return true
+    // }
+    
+    getValue(v){
+        console.log(v)
+        this.props.history.push('/singlePage',v)
+
     }
 
     componentWillReceiveProps(nextProps){
@@ -115,4 +131,4 @@ class More extends Component {
     }
 }
 
-export default connect(mapState, mapDispatch)(More)
+export default withRouter(connect(mapState, mapDispatch)(More))

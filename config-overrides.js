@@ -16,7 +16,8 @@ module.exports = function override(config, env) {
         'images':resolve('src/assets/images'),
         'high':resolve('src/components/HighOrder'),
         'more':resolve('src/pages/more'),
-        'singlePage':resolve('src/pages/singlePage')
+        'singlePage':resolve('src/pages/singlePage'),
+        'match':resolve('src/pages/matchStyle')
     }
     return config;
   };
