@@ -43,83 +43,98 @@ class Location extends Component{
             isPop:false,
             left:false,
             cityArray:[],
-            city:localStorage.getItem('city')||'北京'
+            city:localStorage.getItem('city')||'北京',
+            requrestData:''
         }
         this.toLocation = this.toLocation.bind(this)
     }
     render(){
-        return(
-            <LocWrapper>
-                <PosTitle>
-                    <li onClick={()=>{
-                        this.props.history.push('/home')
-                    }}>
-                        <img src={row} alt=''/> 
-                    </li>
-                    <li>
-                        <span>今天</span>
-                        <span onClick={this.toLocation}>
-                            {this.state.city}
-                            <i>
-                                <img src={down} alt='' />
-                            </i>
-                        </span>
-                    </li>
-                </PosTitle>
-                <PosSelectWrap isPop={this.state.isPop}>
-                    {
-                        this.state.left?
-                        <PosSelectHead>
-                            <span onClick={()=>{
-                                this.setState({
-                                    left:!this.state.left,
-                                })
-                            }}><img src={row} alt=''/></span>
-                            <span>请选择你所在的城市</span>
-                        </PosSelectHead>:
-                        <PosSelectHead>
-                            <span onClick={this.toLocation}>X</span>
-                            <span>请选择你所在的城市</span>
-                        </PosSelectHead>
-                    }
-                    <div>
-                        <PosSelectList>
-                            {
-                                this.props.locationData && Object.keys(this.props.locationData).map((value,index)=>{
-                                    return(
-                                        <PosSelectItem key={index} onClick={()=>{
-                                            this.citySelect(value)
-                                            }}>
-                                            <span>{value}</span>
-                                            <span></span>   
-                                        </PosSelectItem>
-                                    )
-                                })
-                            }                       
-                        </PosSelectList>
-                    </div>
-                    <ListSlider active={this.state.left}>
-                        <PosSelectList>
-                            {
-                                this.state.cityArray.map((value,index)=>{
-                                    return(  
-                                        <PosSelectItem key={index} onClick={
-                                            ()=>{
-                                                this.city(value)
-                                            }
-                                        }>
-                                            <span>{value}</span>
-                                            <span></span>   
-                                        </PosSelectItem>
-                                    )
-                                })
-                            }
-                        </PosSelectList>
-                    </ListSlider>
-                </PosSelectWrap>
-            </LocWrapper>
-        )
-    }
+        console.log(this.props.currentI)
+            return(
+                <LocWrapper>
+                    <PosTitle>
+                        <li onClick={()=>{
+                            this.props.history.push('/home')
+                        }}>
+                            <img src={row} alt=''/> 
+                        </li>
+                        {
+                            this.props.currentI !== 2 ?
+                            <li>
+                                <span>{this.props.currentI === 0 ?'今天':'明天'}</span>
+                                <span onClick={this.toLocation}>
+                                    {this.state.city}
+                                    <i>
+                                        <img src={down} alt='' />
+                                    </i>
+                                </span>
+                            </li>:''
+                        }
+                        
+                    </PosTitle>
+                    <PosSelectWrap isPop={this.state.isPop}>
+                        {
+                            this.state.left?
+                            <PosSelectHead>
+                                <span onClick={()=>{
+                                    this.setState({
+                                        left:!this.state.left,
+                                    })
+                                }}><img src={row} alt=''/></span>
+                                <span>请选择你所在的城市</span>
+                            </PosSelectHead>:
+                            <PosSelectHead>
+                                <span onClick={this.toLocation}>X</span>
+                                <span>请选择你所在的城市</span>
+                            </PosSelectHead>
+                        }
+                        <div>
+                            <PosSelectList>
+                                {
+                                    this.props.locationData && Object.keys(this.props.locationData).map((value,index)=>{
+                                        return(
+                                            <PosSelectItem key={index} onClick={()=>{
+                                                this.citySelect(value)
+                                                this.setState({
+                                                    requrestData:value
+                                                })
+                                                }}>
+                                                <span>{value}</span>
+                                                <span></span>   
+                                            </PosSelectItem>
+                                        )
+                                    })
+                                }                       
+                            </PosSelectList>
+                        </div>
+                        <ListSlider active={this.state.left}>
+                            <PosSelectList>
+                                {
+                                    this.state.cityArray.map((value,index)=>{
+                                        return(  
+                                            <PosSelectItem key={index} onClick={
+                                                ()=>{
+                                                    this.city(value)
+                                                    let con =  this.state.requrestData + ' ' + value
+                                                    this.setState({
+                                                        requrestData:con
+                                                    })
+                                                    //将requrestData传给父组件
+                                                    this.props.receive(con)
+                                                }
+                                            }>
+                                                <span>{value}</span>
+                                                <span></span>   
+                                            </PosSelectItem>
+                                        )
+                                    })
+                                }
+                            </PosSelectList>
+                        </ListSlider>
+                    </PosSelectWrap>
+                </LocWrapper>
+            )
+        }
 
     toLocation(){
        this.setState({

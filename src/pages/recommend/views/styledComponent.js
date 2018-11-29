@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const LocWrapper = styled.div`
     width:100%;
-    /* height:100%; */
+    height:.5rem;
     position:relative;
 `
 

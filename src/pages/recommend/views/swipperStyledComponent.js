@@ -6,67 +6,109 @@ const Recommend = styled.div`
     display:flex;
     flex-direction:column;
     background:#fff;    
-    .space-carousel{
-        height:300px!important;
-        margin-top:.25rem!important;
-    }
-`
-
-const SwipperWrap = styled.div`
-    width:100%;
-    height:100%;
     position:relative;
-`
+    .space-carousel{
+        position:absolute;
+        top:.1rem;
+        height:520px!important;
+        margin-top:.25rem!important;
 
-const SwipperBlock = styled.ul`
-    position:absolute;
-    top:0;
-    left:${props=>props.dis?props.dis:0};
-    width:300%;
-    height:100%;
-    background:#f00;
-    padding-left:7%;
-    transition:all .3s;
+        .slider-decorator-0{
+            bottom:-.4rem!important;
+        }
+    }
+    
 `
 
 const SwipperItem = styled.div`
-    float:left;
     margin-top:1%;
     width:100%;
     height:100%;
-    /* width:3.2rem;
-    height:71.96%; */
-    background:#ff0;
-    /* box-shadow: 5px -5px 5px #eee; */
-    /* border:1px solid #000; */
-    margin-right:1.5%;
+    background:#fff;
+    box-shadow:5px 5px 5px 5px #eee;
+    border-radius:4px;
 `
 
-const Dot = styled.ul`
+const SwipperBottom = styled.ul`
     width:100%;
-    height:.2rem;
-    background:#f0f;
-    position:absolute;
-    bottom:.8rem;
+    flex:1;
     display:flex;
-    text-align:center;
-    padding-left:45%;
-    padding-top:.03rem;
+    justify-content:space-around;
+    background:#fff;
+    border:1px solid #eee;
+    >li{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        >span:nth-child(1){
+            width:.4rem;
+            height:.4rem;
+            >img{
+                margin-top:.1rem;
+                margin-left:.1rem;
+                width:.2rem;
+                height:.2rem;
+            }
+        }
+        >span:nth-child(2){
+            font-size:.12rem;
+            color:#333;
+        }
+    }
 `
-const DotItem = styled.li`
-    width:.12rem;
-    height:.12rem;
-    margin-right:.06rem;
-    border:2px solid #888;
-    border-radius:50%;
-    text-indent:-999999px;
+
+const NoSame = styled.div`
+    margin-top:1%;
+    width:100%;
+    height:5.1rem;
+    background:#fff;
+    box-shadow:5px 5px 5px 5px #e3e3e3;
+    border-radius:4px;
+    position:relative;
+    >div:nth-child(1){
+        width:100%;
+        height:.35rem;
+        padding-top:.75rem;
+        line-height:.35rem; 
+        font-size:.26rem;
+        text-align:center;
+        color:#474747;
+    }
+    >div:nth-child(2){
+        width:100%;
+        height:1.78rem;
+        padding:.6rem .25rem .18rem;
+        >img{
+            width:100%;
+            height:100%;
+        }
+    }
+    >div:nth-child(3){
+        width:100%;
+        height:1.75rem;
+        padding:.35rem .25rem .37rem;
+        >img{
+            width:100%;
+            height:100%;
+        }
+    }
+    >div:nth-child(4){
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:.52rem;
+        >img{
+            width:100%;
+            height:100%;
+        }
+    }
 `
 
 export {
     Recommend,
-    SwipperWrap,
-    SwipperBlock,
     SwipperItem,
-    Dot,
-    DotItem
+    SwipperBottom,
+    NoSame
 }
